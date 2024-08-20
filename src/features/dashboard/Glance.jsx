@@ -42,7 +42,7 @@ const DefaultTimeLineItem = ({ timeLine }) => {
   );
 };
 
-export const Glance = () => {
+const Glance = () => {
   const glanceMeetings = [
     {
       campus: "Campus 1",
