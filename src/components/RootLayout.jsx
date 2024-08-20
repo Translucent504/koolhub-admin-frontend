@@ -8,7 +8,7 @@ import {
 import { Button, Layout, Menu } from "antd";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { footerText } from "util/config";
+import { footerText } from "@mb/config";
 const { Header, Content, Sider, Footer } = Layout;
 
 function RootLayout() {
