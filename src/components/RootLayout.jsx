@@ -1,15 +1,45 @@
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu } from "antd";
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { footerText } from "@mb/config";
 const { Header, Content, Sider, Footer } = Layout;
+
+const NavMenu = () => {
+  const location = useLocation();
+  const pathname = location.pathname;
+  return (
+    <Menu
+      theme="dark"
+      mode="inline"
+      defaultSelectedKeys={[pathname]}
+      items={[
+        {
+          key: "/",
+          icon: <VideoCameraOutlined />,
+          label: <NavLink to="/">Home</NavLink>,
+        },
+        {
+        //   key: "/sample",
+          icon: <UserOutlined />,
+          label: "Sample",
+          children: [
+            {
+              key: "/sample/",
+              icon: <UserOutlined />,
+              label: <NavLink to="/sample">List</NavLink>,
+            },
+          ],
+        },
+      ]}
+    />
+  );
+};
 
 function RootLayout() {
   const [collapsed, setCollapsed] = useState(false);
@@ -40,29 +70,7 @@ function RootLayout() {
               margin: "16px",
             }}
           />
-
-          <Menu
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            items={[
-              {
-                key: "1",
-                icon: <UserOutlined />,
-                label: "nav 1",
-              },
-              {
-                key: "2",
-                icon: <VideoCameraOutlined />,
-                label: "nav 2",
-              },
-              {
-                key: "3",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
-            ]}
-          />
+          <NavMenu />
         </Sider>
         <Layout
           style={{
