@@ -7,10 +7,9 @@ export default defineConfig({
   resolve: {
     alias: {
       components: "/src/components",
-      routes: "/src/routes",
       util: "/src/util",
       "@mb": "/src/@mb",
-      appServices: "/src/appServices",
+      features: "/src/features",
     },
   },
 });
