@@ -1,10 +1,14 @@
-import { Card } from "antd";
+import { Card, Flex } from "antd";
+import List from "./SampleListing";
 
 const Component = () => {
   return (
-    <Card title="Sample Page">
-      <Card.Meta title="Subcard" description="description"></Card.Meta>
-    </Card>
+    <Flex vertical gap="1rem">
+      <Card title="Sample Page">
+        <Card.Meta title="Subcard" description="description" />
+      </Card>
+      <List />
+    </Flex>
   );
 };
 
