@@ -4,6 +4,7 @@ import { HomePage } from "features/dashboard";
 import { SamplePage } from "features/sample";
 import ErrorPage from "components/ErrorPage";
 import SampleDetailPage from "features/sample/SampleDetailPage";
+import SampleCreatePage from "features/sample/SampleCreatePage";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <SamplePage /> },
           {
-            path: "edit/:sampleId",
+            path: "new",
+            element: <SampleCreatePage />,
+          },
+          {
+            path: ":sampleId",
             element: <SampleDetailPage />,
           },
         ],
