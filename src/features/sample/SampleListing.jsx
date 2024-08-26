@@ -1,8 +1,9 @@
-import { Button, Card, Popconfirm, Spin, Table, Tooltip } from "antd";
-import { useState } from "react";
-import { useSampleDelete, useSamplesPaginated } from "./hooks";
 import { DeleteTwoTone, EditOutlined } from "@ant-design/icons";
+import { Button, Popconfirm, Tooltip } from "antd";
+import SimpleGrid from "components/SimpleGrid";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSampleDelete, useSamplesPaginated } from "./hooks";
 
 const getColumns = ({ onHandleEditItem, handleDelete, deleting }) => [
   { title: "ID", dataIndex: "id" },
@@ -77,38 +78,16 @@ const List = () => {
   };
 
   const columns = getColumns({ onHandleEditItem, handleDelete, deleting });
+  
   return (
-    <Card
-      title="Yep"
-      style={{
-        background: "linear-gradient(90deg,#872776,#352883)",
-        border: "none",
-      }}
-      styles={{
-        header: {
-          border: "none",
-        },
-        title: {
-          color: "white",
-          fontSize: "large",
-        },
-        body: {
-          paddingBlockStart: 0,
-        },
-      }}
-    >
-      <Card>
-        <Spin spinning={isFetching} tip="loading...">
-          <Table
-            dataSource={dataList}
-            columns={columns}
-            rowKey="id"
-            pagination={pagination}
-            onChange={onChange}
-          />
-        </Spin>
-      </Card>
-    </Card>
+    <SimpleGrid
+      dataSource={dataList}
+      columns={columns}
+      title="Sample Listing"
+      pagination={pagination}
+      onChange={onChange}
+      loading={isFetching}
+    />
   );
 };
 
