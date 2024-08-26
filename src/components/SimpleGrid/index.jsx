@@ -6,9 +6,10 @@ import { Card, Spin, Table } from "antd";
  * @type {React.FC<import("antd").TableProps>}
  *
  */
-const SimpleGrid = ({ cardTitle, loading, rowKey, ...props }) => {
+const SimpleGrid = ({ cardTitle, cardExtra, loading, rowKey, ...props }) => {
   return (
     <Card
+      extra={cardExtra}
       title={cardTitle}
       style={{
         background: "linear-gradient(90deg,#872776,#352883)",
