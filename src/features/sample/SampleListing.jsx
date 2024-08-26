@@ -1,4 +1,8 @@
-import { DeleteTwoTone, EditOutlined } from "@ant-design/icons";
+import {
+    DeleteTwoTone,
+    EditOutlined,
+    PlusCircleTwoTone,
+} from "@ant-design/icons";
 import { Button, Popconfirm, Tooltip } from "antd";
 import SimpleGrid from "components/SimpleGrid";
 import { useState } from "react";
@@ -70,7 +74,7 @@ const List = () => {
   };
 
   const onHandleEditItem = (id) => {
-    navigate(`edit/${id}`);
+    navigate(`${id}`);
   };
 
   const onChange = (page) => {
@@ -87,8 +91,18 @@ const List = () => {
       pagination={pagination}
       onChange={onChange}
       loading={isFetching}
+      cardExtra={<Toolbar />}
     />
   );
 };
 
 export default List;
+
+function Toolbar() {
+  const navigate = useNavigate();
+  return (
+    <Button type="default" icon={<PlusCircleTwoTone />} onClick={() => navigate("new")}>
+      Add
+    </Button>
+  );
+}
