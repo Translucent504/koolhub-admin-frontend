@@ -24,6 +24,11 @@ const SampleForm = ({ ...props }) => {
     <Form {...formItemLayout} requiredMark={false} layout="vertical" {...props}>
       <Row gutter={[16]}>
         <Col span={24}>
+          <Form.Item name={["id"]} label="ID">
+            <Input disabled />
+          </Form.Item>
+        </Col>
+        <Col span={24}>
           <Form.Item
             name={["name"]}
             label="Name"
@@ -33,11 +38,6 @@ const SampleForm = ({ ...props }) => {
               },
             ]}
           >
-            <Input />
-          </Form.Item>
-        </Col>
-        <Col span={24}>
-          <Form.Item name={["id"]} label="ID">
             <Input />
           </Form.Item>
         </Col>
