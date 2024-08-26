@@ -4,8 +4,8 @@ import { ConfigProvider, theme } from "antd";
 import { RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import "antd/dist/reset.css";
 import { router } from "./routes";
+import "antd/dist/reset.css";
 
 const queryClient = new QueryClient({
   defaultOptions: {
