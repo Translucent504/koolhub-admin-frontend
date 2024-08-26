@@ -65,7 +65,7 @@ export const useSampleUpdate = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (query) => {
-      return sampleService.submit(query);
+      return sampleService.createOrUpdate(query);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
