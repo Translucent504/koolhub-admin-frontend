@@ -102,6 +102,7 @@ function RootLayout() {
                 margin: 0,
                 background: "lightgray",
                 minHeight: "calc(100% - var(--ant-layout-header-height))",
+                overflowX: "hidden",
               }}
             >
               <Outlet />
