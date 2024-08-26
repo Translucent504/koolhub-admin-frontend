@@ -4,12 +4,12 @@ import { Card, Spin, Table } from "antd";
  * Simple Grid
  *
  * @type {React.FC<import("antd").TableProps>}
- * @returns {React.ReactElement}
+ *
  */
-const SimpleGrid = ({ title, loading, rowKey, ...props }) => {
+const SimpleGrid = ({ cardTitle, loading, rowKey, ...props }) => {
   return (
     <Card
-      title={title}
+      title={cardTitle}
       style={{
         background: "linear-gradient(90deg,#872776,#352883)",
         border: "none",
@@ -23,7 +23,7 @@ const SimpleGrid = ({ title, loading, rowKey, ...props }) => {
           fontSize: "large",
         },
         body: {
-          paddingBlockStart: title ? 0 : null,
+          paddingBlockStart: cardTitle ? 0 : null,
         },
       }}
     >

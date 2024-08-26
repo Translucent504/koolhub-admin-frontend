@@ -78,12 +78,12 @@ const List = () => {
   };
 
   const columns = getColumns({ onHandleEditItem, handleDelete, deleting });
-  
+
   return (
     <SimpleGrid
       dataSource={dataList}
       columns={columns}
-      title="Sample Listing"
+      cardTitle="Sample Listing"
       pagination={pagination}
       onChange={onChange}
       loading={isFetching}
