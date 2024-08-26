@@ -23,7 +23,7 @@ const sampleService = {
   //   getById: async (id) => mb.api.get(`api/sample/${id}`),
   //   createOrUpdate: async (query) => mb.api.post(`api/sample/`, query),
   //   delete: async (id) => mb.api.sendDelete(`api/sample/${id}`),
-  
+
   getPagedList: async ({ pageNumber = 1, pageSize = 10 }) => {
     const total = SAMPLE_DATA.length;
     const totalPages = Math.ceil(total / pageSize);
@@ -43,7 +43,7 @@ const sampleService = {
     };
   },
   getById: async (id) => {
-    return SAMPLE_DATA.find((item) => item.id === id) || null;
+    return SAMPLE_DATA.find((item) => +item.id === +id) || null;
   },
   createOrUpdate: async (query) => {
     const index = SAMPLE_DATA.findIndex((item) => item.id === query.id);
