@@ -18,6 +18,8 @@ let SAMPLE_DATA = [
   { id: 15, name: "Oscar" },
 ];
 
+let nextId = SAMPLE_DATA.length + 1;
+
 const sampleService = {
   //   getPagedList: async (query) => mb.api.getPagedList(`api/sample/paged`, query),
   //   getById: async (id) => mb.api.get(`api/sample/${id}`),
@@ -28,7 +30,10 @@ const sampleService = {
     const total = SAMPLE_DATA.length;
     const totalPages = Math.ceil(total / pageSize);
     const startIndex = (pageNumber - 1) * pageSize;
-    const data = SAMPLE_DATA.slice(startIndex, startIndex + pageSize);
+    const data = SAMPLE_DATA.toSorted((a, b) => b.id - a.id).slice(
+      startIndex,
+      startIndex + pageSize
+    );
 
     return {
       data: data,
@@ -52,7 +57,8 @@ const sampleService = {
       SAMPLE_DATA[index] = { ...SAMPLE_DATA[index], ...query };
       return SAMPLE_DATA[index];
     } else {
-      const newItem = { id: query.id, ...query };
+      const newItem = { ...query, id: nextId };
+      nextId += 1;
       SAMPLE_DATA.push(newItem);
       return newItem;
     }
