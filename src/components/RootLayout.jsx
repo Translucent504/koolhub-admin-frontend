@@ -25,7 +25,6 @@ const NavMenu = () => {
           label: <NavLink to="/">Home</NavLink>,
         },
         {
-        //   key: "/sample",
           icon: <UserOutlined />,
           label: "Sample",
           children: [
