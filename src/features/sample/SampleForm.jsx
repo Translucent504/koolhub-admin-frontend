@@ -1,5 +1,19 @@
 import { Button, Col, Form, Input, Row } from "antd";
 
+const formItemLayout = {
+  labelCol: {
+    span: 6,
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    lg: {
+      span: 12,
+    },
+  },
+};
+
 /**
  * Simple Grid
  *
@@ -7,19 +21,6 @@ import { Button, Col, Form, Input, Row } from "antd";
  *
  */
 const SampleForm = ({ ...props }) => {
-  const formItemLayout = {
-    labelCol: {
-      span: 6,
-    },
-    wrapperCol: {
-      xs: {
-        span: 24,
-      },
-      lg: {
-        span: 12,
-      },
-    },
-  };
   return (
     <Form {...formItemLayout} requiredMark={false} layout="vertical" {...props}>
       <Row gutter={[16]}>
