@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { router } from "./routes";
 import "antd/dist/reset.css";
+import { AuthProvider } from "features/auth/context";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,19 +22,21 @@ const queryClient = new QueryClient({
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <ConfigProvider
-        theme={{
-          cssVar: true,
-          hashed: false,
-          algorithm: theme.defaultAlgorithm,
-          token: {
-            colorPrimary: "#602eff",
-          },
-        }}
-      >
-        <RouterProvider router={router} />
-      </ConfigProvider>
+      <AuthProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <ConfigProvider
+          theme={{
+            cssVar: true,
+            hashed: false,
+            algorithm: theme.defaultAlgorithm,
+            token: {
+              colorPrimary: "#602eff",
+            },
+          }}
+        >
+          <RouterProvider router={router} />
+        </ConfigProvider>
+      </AuthProvider>
     </QueryClientProvider>
   </StrictMode>
 );
