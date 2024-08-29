@@ -110,7 +110,7 @@ function RootLayout() {
               style={{
                 padding: 24,
                 margin: 0,
-                background: "lightgray",
+                background: "#F2EFF5",
                 minHeight: "calc(100% - var(--ant-layout-header-height))",
                 overflowX: "hidden",
               }}
