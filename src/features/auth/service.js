@@ -11,5 +11,7 @@ export const clearAuthentication = async () => {
 
 export const authenticateUser = async () => {
   // update axios token header
-  return storage.setObject("user", { name: "Admin" });
+  const user = { name: "Admin" };
+  storage.setObject("user", user);
+  return user;
 };
