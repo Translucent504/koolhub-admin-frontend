@@ -83,7 +83,6 @@ function RootLayout() {
         >
           <Header
             style={{
-              background: "#fff",
               padding: 0,
             }}
           >
@@ -100,6 +99,7 @@ function RootLayout() {
                   fontSize: "16px",
                   width: 64,
                   height: 64,
+                  color: "white",
                 }}
               />
               <UserMenu />
@@ -148,12 +148,14 @@ function UserMenu() {
           {
             key: 1,
             icon: <AimOutlined />,
-            label: "Placeholder",
+            label: "Something",
+            disabled: true,
           },
           {
             key: 2,
             icon: <TruckOutlined />,
-            label: "Placeholder 2",
+            label: "Something 2",
+            disabled: true,
           },
           { type: "divider" },
           {
@@ -167,7 +169,11 @@ function UserMenu() {
       trigger={["click"]}
       arrow
     >
-      <Button type="ghost" icon={<Avatar icon={<UserOutlined />} />}>
+      <Button
+        style={{ color: "white" }}
+        type="text"
+        icon={<Avatar icon={<UserOutlined />} />}
+      >
         {user.name}
       </Button>
     </Dropdown>
