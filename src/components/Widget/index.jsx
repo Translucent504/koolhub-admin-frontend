@@ -1,5 +1,11 @@
 import { Card } from "antd";
 
+/**
+ * Simple Grid
+ *
+ * @type {React.FC<import("antd").CardProps>}
+ *
+ */
 const Widget = ({
   title,
   children,

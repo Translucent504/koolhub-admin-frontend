@@ -42,70 +42,67 @@ const DefaultTimeLineItem = ({ timeLine }) => {
   );
 };
 
+const glanceMeetings = [
+  {
+    campus: "Campus 1",
+    category: "Meeting",
+    timing: "9:00 AM",
+    meeting_with: "Meeting with John Doe",
+    description: "Meeting with John Doe to discuss the new project.",
+  },
+  {
+    campus: "Campus 2",
+    category: "Meeting",
+    timing: "9:00 AM",
+    meeting_with: "Meeting with Jane Doe",
+    description: "Meeting with Jane Doe to discuss the new project.",
+  },
+  {
+    campus: "Campus 3",
+    category: "Meeting",
+    timing: "9:00 AM",
+    meeting_with: "Meeting with John Doe",
+    description: "Meeting with John Doe to discuss the new project.",
+  },
+  {
+    campus: "Campus 4",
+    category: "Meeting",
+    timing: "9:00 AM",
+    meeting_with: "Meeting with Jane Doe",
+    description: "Meeting with Jane Doe to discuss the new project.",
+  },
+];
 const Glance = () => {
-  const glanceMeetings = [
-    {
-      campus: "Campus 1",
-      category: "Meeting",
-      timing: "9:00 AM",
-      meeting_with: "Meeting with John Doe",
-      description: "Meeting with John Doe to discuss the new project.",
-    },
-    {
-      campus: "Campus 2",
-      category: "Meeting",
-      timing: "9:00 AM",
-      meeting_with: "Meeting with Jane Doe",
-      description: "Meeting with Jane Doe to discuss the new project.",
-    },
-    {
-      campus: "Campus 3",
-      category: "Meeting",
-      timing: "9:00 AM",
-      meeting_with: "Meeting with John Doe",
-      description: "Meeting with John Doe to discuss the new project.",
-    },
-    {
-      campus: "Campus 4",
-      category: "Meeting",
-      timing: "9:00 AM",
-      meeting_with: "Meeting with Jane Doe",
-      description: "Meeting with Jane Doe to discuss the new project.",
-    },
-  ];
-
   return (
-    <>
-      <Widget
-        title={"Meetings"}
-        styles={{
-          body: {
-            maxHeight: "300px",
-            overflow: "auto",
-          },
-        }}
-      >
-        <Row>
-          <Col span={24}>
-            {glanceMeetings.length ? (
-              <Timeline
-                style={{
-                  "--ant-margin": "36px",
-                }}
-                items={glanceMeetings?.map((timeLine, index) => ({
-                  children: (
-                    <DefaultTimeLineItem key={index} timeLine={timeLine} />
-                  ),
-                  dot: timeLine.timing,
-                }))}
-              />
-            ) : (
-              <>No Meetings Available</>
-            )}
-          </Col>
-        </Row>
-      </Widget>
-    </>
+    <Widget
+      title={"Meetings"}
+      styles={{
+        body: {
+          maxHeight: "300px",
+          overflow: "auto",
+        },
+      }}
+    >
+      <Row>
+        <Col span={24}>
+          {glanceMeetings.length ? (
+            <Timeline
+              style={{
+                "--ant-margin": "36px",
+              }}
+              items={glanceMeetings?.map((timeLine, index) => ({
+                children: (
+                  <DefaultTimeLineItem key={index} timeLine={timeLine} />
+                ),
+                dot: timeLine.timing,
+              }))}
+            />
+          ) : (
+            <>No Meetings Available</>
+          )}
+        </Col>
+      </Row>
+    </Widget>
   );
 };
 
