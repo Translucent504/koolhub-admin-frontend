@@ -1,13 +1,17 @@
 import {
+  AimOutlined,
+  LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  TruckOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu } from "antd";
+import { footerText } from "@mb/config";
+import { Avatar, Button, Dropdown, Flex, Layout, Menu } from "antd";
+import { useAuth } from "features/auth/hooks";
 import { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { footerText } from "@mb/config";
 const { Header, Content, Sider, Footer } = Layout;
 
 const NavMenu = () => {
@@ -81,19 +85,25 @@ function RootLayout() {
             style={{
               background: "#fff",
               padding: 0,
-              alignItems: "center",
             }}
           >
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: "16px",
-                width: 64,
-                height: 64,
-              }}
-            />
+            <Flex
+              align="center"
+              justify="space-between"
+              style={{ paddingInlineEnd: 24 }}
+            >
+              <Button
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  fontSize: "16px",
+                  width: 64,
+                  height: 64,
+                }}
+              />
+              <UserMenu />
+            </Flex>
           </Header>
           <Layout>
             <Content
@@ -122,3 +132,44 @@ function RootLayout() {
 }
 
 export default RootLayout;
+
+function UserMenu() {
+  const { user, signOut } = useAuth();
+
+  const handleLogout = () => {
+    signOut();
+  };
+
+  return (
+    <Dropdown
+      placement="bottomLeft"
+      menu={{
+        items: [
+          {
+            key: 1,
+            icon: <AimOutlined />,
+            label: "Placeholder",
+          },
+          {
+            key: 2,
+            icon: <TruckOutlined />,
+            label: "Placeholder 2",
+          },
+          { type: "divider" },
+          {
+            key: "logout",
+            icon: <LogoutOutlined />,
+            label: "Logout",
+            onClick: handleLogout,
+          },
+        ],
+      }}
+      trigger={["click"]}
+      arrow
+    >
+      <Button type="ghost" icon={<Avatar icon={<UserOutlined />} />}>
+        {user.name}
+      </Button>
+    </Dropdown>
+  );
+}
