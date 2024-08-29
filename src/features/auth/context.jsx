@@ -18,12 +18,12 @@ export function AuthProvider({ children }) {
     const initializeAuth = async () => {
       try {
         const user = await getUserDetails();
-        if (!user) {
+        if (!user?.name) {
           setAuthState(null);
           queryClient.clear();
           return;
         }
-        setAuthState({ user, loading });
+        setAuthState(user);
       } catch (error) {
         if (error) {
           console.error("Authentication error:", error);
