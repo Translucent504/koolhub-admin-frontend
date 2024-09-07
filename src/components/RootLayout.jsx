@@ -39,6 +39,11 @@ const NavMenu = () => {
             },
           ],
         },
+        {
+          key: "/vans",
+          icon: <TruckOutlined />,
+          label: <NavLink to="/vans">Van Management</NavLink>,
+        },
       ]}
     />
   );

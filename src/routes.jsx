@@ -4,6 +4,9 @@ import { SamplePage } from "features/sample";
 import ErrorPage from "components/ErrorPage";
 import SampleDetailPage from "features/sample/SampleDetailPage";
 import SampleCreatePage from "features/sample/SampleCreatePage";
+import { VanPage } from "features/vans";
+import VanCreatePage from "features/vans/VanCreatePage";
+import VanDetailPage from "features/vans/VanDetailPage";
 import {
   AuthLayout,
   RequireAnonymous,
@@ -39,6 +42,20 @@ export const router = createBrowserRouter([
               {
                 path: ":sampleId",
                 element: <SampleDetailPage />,
+              },
+            ],
+          },
+          {
+            path: "vans",
+            children: [
+              { index: true, element: <VanPage /> },
+              {
+                path: "new",
+                element: <VanCreatePage />,
+              },
+              {
+                path: ":vanId",
+                element: <VanDetailPage />,
               },
             ],
           },
