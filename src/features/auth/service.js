@@ -1,21 +1,22 @@
 import { storage } from "@mb";
+import { mb } from "@mb/api";
 
 export const getUserDetails = async () => {
   return storage.getObject("user");
 };
 
-export const clearAuthentication = async (api) => {
+export const clearAuthentication = async () => {
   // update axios token header
   storage.clear();
-  delete api.defaults.headers["Authorization"];
+  mb.api.setAuthorizationToken(null);
 };
 
-export const authenticateUser = async (api) => {
+export const authenticateUser = async () => {
   const token = "";
   // update axios token header
   const user = { name: "Admin" };
   storage.setObject("user", user);
-  api.defaults.headers["Authorization"] = `Bearer ${token}`;
+  mb.api.setAuthorizationToken(token);
 
   return user;
 };

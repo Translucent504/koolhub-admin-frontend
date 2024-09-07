@@ -17,14 +17,23 @@ const apiCall = {
 
   post: async (url, entity) => (await apiClient.post(url, entity)).data,
 
-  postFormData: async (url, formData) => (await apiClient.post(url, formData)).data,
+  postFormData: async (url, formData) =>
+    (await apiClient.post(url, formData)).data,
 
-  postToFileUpload: async (formData) => (await apiClient.post('api/file/upload', formData)).data,
+  postToFileUpload: async (formData) =>
+    (await apiClient.post("api/file/upload", formData)).data,
 
   delete: async (url, query) => {
     const config = utils.isEmpty(query) ? {} : { params: query };
     return (await apiClient.delete(url, config)).data;
-  }
+  },
+  setAuthorizationToken: (token) => {
+    if (!token) {
+      delete apiClient.defaults.headers["Authorization"];
+      return;
+    }
+    apiClient.defaults.headers["Authorization"] = `Bearer ${token}`;
+  },
 };
 
 export const mb = {

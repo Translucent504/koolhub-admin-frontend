@@ -12,7 +12,7 @@ apiClient.interceptors.response.use(
   (error) => {
     switch (error.response.status) {
       case 401:
-        clearAuthentication(apiClient);
+        clearAuthentication();
         break;
       default:
         console.log(error.response);
