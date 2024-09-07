@@ -1,18 +1,18 @@
 import axios from "axios";
 import { clearAuthentication } from "features/auth/service";
 
-let api = axios.create({
+let apiClient = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-api.interceptors.response.use(
+apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     switch (error.response.status) {
       case 401:
-        clearAuthentication(api);
+        clearAuthentication(apiClient);
         break;
       default:
         console.log(error.response);
@@ -21,4 +21,4 @@ api.interceptors.response.use(
   }
 );
 
-export default api;
+export default apiClient;
