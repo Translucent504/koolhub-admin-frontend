@@ -1,8 +1,7 @@
 import axios from "axios";
+import { clearAuthentication } from "features/auth/service";
 
 let api = axios.create({
-  // baseURL: `http://110.37.220.229/portal-web/`,
-  // baseURL: `http://localhost:3000/`,
   headers: {
     "Content-Type": "application/json",
   },
@@ -15,11 +14,11 @@ api.interceptors.response.use(
     //debugger;
     switch (error.response.status) {
       case 401:
-        window.location = `${process.env.REACT_APP_VERIFY_PATH}`;
+        clearAuthentication();
         break;
       default:
         console.log(error.response);
-        //window.location = "/500"
+      //window.location = "/500"
     }
     return Promise.reject(error);
   }

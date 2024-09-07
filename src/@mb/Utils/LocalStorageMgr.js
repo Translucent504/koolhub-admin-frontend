@@ -4,8 +4,8 @@ const LocalStorageMgr = {
   setObject,
   getObject,
   clear,
-  remove
-}
+  remove,
+};
 
 var storage = localStorage;
 
@@ -21,8 +21,8 @@ function setObject(key, value) {
   return storage[key];
 }
 
-function getObject(key, value) {
-  return JSON.parse(storage[key] || '{}');
+function getObject(key) {
+  return JSON.parse(storage[key] || "{}");
 }
 
 function clear() {
