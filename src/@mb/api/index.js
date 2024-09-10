@@ -2,6 +2,7 @@ import { utils } from "@mb";
 import apiClient from "./axios";
 
 const apiCall = {
+  apiClient,
   get: async (url, query) => {
     const config = utils.isEmpty(query) ? {} : { params: query };
     return (await apiClient.get(url, config)).data;

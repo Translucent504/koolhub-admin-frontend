@@ -3,11 +3,12 @@ import { createContext, useEffect, useState } from "react";
 import {
   authenticateUser,
   clearAuthentication,
-  getUserDetails,
+  initializeAuth,
 } from "./service";
 
 export let AuthContext = createContext(undefined);
 
+let initialized = false;
 export function AuthProvider({ children }) {
   let [authState, setAuthState] = useState(null);
   let [loading, setLoading] = useState(true);
@@ -15,27 +16,32 @@ export function AuthProvider({ children }) {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    const initializeAuth = async () => {
-      try {
-        const user = await getUserDetails();
-        if (!user?.name) {
-          setAuthState(null);
-          queryClient.clear();
-          return;
+    const initialize = async () => {
+      if (!initialized) {
+        try {
+          const user = await initializeAuth();
+          console.log({ user });
+          if (!user) {
+            setAuthState(null);
+            queryClient.clear();
+            return;
+          }
+          setAuthState(user);
+        } catch (error) {
+          if (error) {
+            console.error("Authentication error:", error);
+            setAuthState(null);
+            queryClient.clear();
+          }
+        } finally {
+          setLoading(false);
         }
-        setAuthState(user);
-      } catch (error) {
-        if (error) {
-          console.error("Authentication error:", error);
-          setAuthState(null);
-          queryClient.clear();
-        }
-      } finally {
-        setLoading(false);
       }
     };
-
-    initializeAuth();
+    initialize();
+    return () => {
+      initialized = true;
+    };
   }, []);
 
   let signOut = async (callback) => {
@@ -45,8 +51,8 @@ export function AuthProvider({ children }) {
     callback?.();
   };
 
-  let signIn = async () => {
-    const res = await authenticateUser();
+  let signIn = async ({ username, password }) => {
+    const res = await authenticateUser({ username, password });
     setAuthState(res);
   };
 
