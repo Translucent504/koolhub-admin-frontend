@@ -1,5 +1,5 @@
-import apiClient from "./axios";
 import { utils } from "@mb";
+import apiClient from "./axios";
 
 const apiCall = {
   get: async (url, query) => {

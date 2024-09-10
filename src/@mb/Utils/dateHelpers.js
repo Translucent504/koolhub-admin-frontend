@@ -5,6 +5,7 @@ import isBetween from "dayjs/plugin/isBetween";
 import duration from "dayjs/plugin/duration";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import utils from "./common";
 
 dayjs.extend(utc);
 dayjs.extend(calendar);
@@ -12,17 +13,6 @@ dayjs.extend(isBetween);
 dayjs.extend(duration);
 dayjs.extend(localizedFormat);
 dayjs.extend(customParseFormat);
-
-const utils = {
-  isEmpty: (value) => {
-    if (typeof obj == "number") return false;
-    if (value == null || value === undefined) return true;
-    if (typeof value === "string" || Array.isArray(value))
-      return value.length === 0;
-    if (typeof value === "object") return Object.keys(value).length === 0;
-    return false;
-  },
-};
 
 const formats = {
   Full: "YYYY-MM-DDTHH:mm:ss.sss",

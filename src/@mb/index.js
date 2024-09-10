@@ -11,3 +11,4 @@
 // export { utils, storage, ui, dt, lng, useClaims, ClaimKeys, useUserCampusList };
 
 export { default as storage } from "./utils/localStorageMgr";
+export { default as utils } from "./utils/common";
