@@ -10,9 +10,11 @@ const apiCall = {
 
   getPagedList: async (url, query) => {
     const response = await apiClient.get(url, { params: query });
+    const pageInfo = JSON.parse(response.headers.get("X-Pagination"));
+    const data = response.data;
     return {
-      pageInfo: JSON.parse(response.headers["x-pagination"]),
-      data: response.data,
+      pageInfo,
+      data,
     };
   },
 

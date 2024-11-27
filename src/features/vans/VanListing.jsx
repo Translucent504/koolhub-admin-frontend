@@ -2,28 +2,34 @@ import { useQuery } from "@tanstack/react-query";
 import { Button, Card, Table } from "antd";
 import { Link } from "react-router-dom";
 import vanService from "./service";
+import { useState } from "react";
 
 const VanList = () => {
+  const [page, setPage] = useState(1);
   const { data, isLoading } = useQuery({
-    queryKey: ["vans"],
-    queryFn: () => vanService.getPagedList({ pageNumber: 1, pageSize: 10 }),
+    queryKey: ["vans", page],
+    queryFn: async () => {
+      return vanService.getPagedList({
+        pageNumber: page,
+        pageSize: 10,
+      });
+    },
   });
-
   const columns = [
     {
       title: "Name",
-      dataIndex: "name",
-      key: "name",
+      dataIndex: "vanName",
+      key: "vanName",
     },
     {
-      title: "Model",
-      dataIndex: "model",
-      key: "model",
+      title: "Time",
+      dataIndex: "time",
+      key: "time",
     },
     {
-      title: "Year",
-      dataIndex: "year",
-      key: "year",
+      title: "Driver",
+      dataIndex: "personName",
+      key: "personName",
     },
     {
       title: "Actions",
@@ -35,7 +41,9 @@ const VanList = () => {
       ),
     },
   ];
-
+  const handleChange = ({ current }) => {
+    setPage(current);
+  };
   return (
     <Card
       title="Van List"
@@ -55,6 +63,7 @@ const VanList = () => {
           pageSize: data?.pageInfo.pageSize,
           current: data?.pageInfo.current,
         }}
+        onChange={handleChange}
       />
     </Card>
   );
