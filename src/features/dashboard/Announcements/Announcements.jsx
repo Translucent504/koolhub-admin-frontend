@@ -3,11 +3,11 @@ const { Text } = Typography;
 
 import Widget from "components/Widget";
 import { CalendarOutlined } from "@ant-design/icons";
-import { useAnnouncements } from "./hooks";
+import { dt } from "@mb";
+import { useAnnouncements } from "./hook";
 const Announcements = () => {
   const { data } = useAnnouncements();
-  console.log(data);
-
+  
   const announcements = data || [];
 
   return (
@@ -16,7 +16,7 @@ const Announcements = () => {
       styles={{
         body: {
           maxHeight: "300px",
-          maxWidth:"45%",
+          // maxWidth:"45%",
           overflow: "auto",
         },
       }}
@@ -54,7 +54,9 @@ const Announcements = () => {
                       borderRadius: "12px",
                     }}
                   >
-                    {item.date}
+                    {dt.toShortDateString(item.ann_date, dt.formats.YearMonthDateDashed)}
+                    {/* {dt.toMonthYearString(item.ann_date, dt.formats.MonthDateYear4)} */}
+
                   </Text>
                 </Col>
               </Row>
@@ -74,7 +76,7 @@ const Announcements = () => {
                       lineHeight: "1.6",
                     }}
                   >
-                    {item.description}
+                    {item.announcement}
                   </Text>
                 </Col>
               </Row>

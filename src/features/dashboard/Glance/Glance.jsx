@@ -1,5 +1,6 @@
 import { Badge, Card, Col, Row, Timeline } from "antd";
 import Widget from "components/Widget";
+import { useGlanceMeetings } from "./hook";
 const { Meta } = Card;
 
 const DefaultTimeLineItem = ({ timeLine }) => {
@@ -42,37 +43,45 @@ const DefaultTimeLineItem = ({ timeLine }) => {
   );
 };
 
-const glanceMeetings = [
-  {
-    campus: "Campus 1",
-    category: "Meeting",
-    timing: "9:00 AM",
-    meeting_with: "Meeting with John Doe",
-    description: "Meeting with John Doe to discuss the new project.",
-  },
-  {
-    campus: "Campus 2",
-    category: "Meeting",
-    timing: "9:00 AM",
-    meeting_with: "Meeting with Jane Doe",
-    description: "Meeting with Jane Doe to discuss the new project.",
-  },
-  {
-    campus: "Campus 3",
-    category: "Meeting",
-    timing: "9:00 AM",
-    meeting_with: "Meeting with John Doe",
-    description: "Meeting with John Doe to discuss the new project.",
-  },
-  {
-    campus: "Campus 4",
-    category: "Meeting",
-    timing: "9:00 AM",
-    meeting_with: "Meeting with Jane Doe",
-    description: "Meeting with Jane Doe to discuss the new project.",
-  },
-];
+// const glanceMeetings = [
+//   {
+//     campus: "Campus 1",
+//     category: "Meeting",
+//     timing: "9:00 AM",
+//     meeting_with: "Meeting with John Doe",
+//     description: "Meeting with John Doe to discuss the new project.",
+//   },
+//   {
+//     campus: "Campus 2",
+//     category: "Meeting",
+//     timing: "9:00 AM",
+//     meeting_with: "Meeting with Jane Doe",
+//     description: "Meeting with Jane Doe to discuss the new project.",
+//   },
+//   {
+//     campus: "Campus 3",
+//     category: "Meeting",
+//     timing: "9:00 AM",
+//     meeting_with: "Meeting with John Doe",
+//     description: "Meeting with John Doe to discuss the new project.",
+//   },
+//   {
+//     campus: "Campus 4",
+//     category: "Meeting",
+//     timing: "9:00 AM",
+//     meeting_with: "Meeting with Jane Doe",
+//     description: "Meeting with Jane Doe to discuss the new project.",
+//   },
+// ];
 const Glance = () => {
+  const { data: glanceMeetings } = useGlanceMeetings({
+    date: "2018-02-10",
+    // date: dt.toShortDateString(
+    //   dt.toLocal(),
+    //   dt.formats.YearMonthDateDashed
+    // ),
+  });
+  console.log(glanceMeetings);
   return (
     <Widget
       title={"Meetings"}
@@ -85,7 +94,7 @@ const Glance = () => {
     >
       <Row>
         <Col span={24}>
-          {glanceMeetings.length ? (
+          {glanceMeetings?.length ? (
             <Timeline
               style={{
                 "--ant-margin": "36px",

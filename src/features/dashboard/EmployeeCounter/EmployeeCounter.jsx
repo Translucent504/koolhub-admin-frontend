@@ -6,12 +6,20 @@ import {
   PoweroffOutlined,
 } from "@ant-design/icons";
 import Widget from "components/Widget";
-import { useEmployeeCount } from "./hooks";
+import { useContext } from "react";
+import { AuthContext } from "features/auth/context";
+import { dt } from "@mb";
+import { useEmployeeCount } from "./hook";
 
 const { Text } = Typography;
 
 const EmployeeCounter = () => {
-  const { data } = useEmployeeCount();
+  const { user } = useContext(AuthContext);
+
+  const { data } = useEmployeeCount({
+    campusId: user.campusId,
+    date: dt.today().format(dt.formats.DateMonthYear1),
+  });
 
   // Dynamic Employee Data
   const employeeData = [
@@ -47,7 +55,6 @@ const EmployeeCounter = () => {
       styles={{
         body: {
           maxHeight: "300px",
-          maxWidth:"45%",
           overflow: "auto",
         },
       }}

@@ -1,13 +1,16 @@
 import { Table, Typography } from "antd";
 import Widget from "components/Widget";
 import dayjs from "dayjs";
-import { useExitStudentsList } from "./hooks";
+import { AuthContext } from "features/auth/context";
+import { useContext } from "react";
+import { useExitStudentsList } from "./hook";
 
 const { Text } = Typography;
 
 const ExitStudentTracking = () => {
-  
-  const { data } = useExitStudentsList();
+  const { user } = useContext(AuthContext);
+
+  const { data } = useExitStudentsList({ campusId: user.campusId });
 
   // Columns Definition
   const columns = [
@@ -52,7 +55,7 @@ const ExitStudentTracking = () => {
       styles={{
         body: {
           maxHeight: "300px",
-          maxWidth:"65%",
+          // maxWidth:"65%",
           overflow: "auto",
         },
       }}
