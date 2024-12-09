@@ -2,7 +2,6 @@ import { Button, Card, Form, Input, Skeleton, Typography } from "antd";
 import RootLayout from "components/RootLayout";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "./hooks";
-
 const { Title } = Typography;
 
 export function RequireAuth() {
