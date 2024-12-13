@@ -59,9 +59,16 @@ const EmployeeCounter = () => {
         },
       }}
     >
-      <Row gutter={[16, 16]} justify="center">
+      <Row gutter={[24, 24]} >
         {employeeData.map((item, index) => (
-          <Col key={index} xs={12} sm={12} md={6}>
+          <Col
+            key={index}
+            xs={24}
+            sm={8}
+            md={12}
+            lg={6}
+            style={{ display: "flex", justifyContent: "center" }}
+          >
             <Card
               bordered={false}
               style={{
@@ -69,7 +76,8 @@ const EmployeeCounter = () => {
                 borderRadius: 10,
                 textAlign: "center",
                 color: "#fff",
-                width: "120px",
+                width: "100%", // Ensure it adjusts within the column
+                maxWidth: "120px", // Limit maximum width
               }}
             >
               <Space direction="vertical" size="middle" align="center">

@@ -54,8 +54,7 @@ const ExitStudentTracking = () => {
       title={"Exit Students List"}
       styles={{
         body: {
-          maxHeight: "300px",
-          // maxWidth:"65%",
+          maxHeight: "250px",
           overflow: "auto",
         },
       }}
@@ -64,8 +63,9 @@ const ExitStudentTracking = () => {
         dataSource={data}
         columns={columns}
         rowKey="grNumber"
-        bordered
+        // bordered
         pagination={{ pageSize: 10 }}
+        // tableLayout="fixed"
       />
     </Widget>
   );

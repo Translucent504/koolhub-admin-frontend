@@ -81,7 +81,6 @@ const Glance = () => {
     //   dt.formats.YearMonthDateDashed
     // ),
   });
-  console.log(glanceMeetings);
   return (
     <Widget
       title={"Meetings"}

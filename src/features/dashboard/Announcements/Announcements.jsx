@@ -31,8 +31,6 @@ const Announcements = () => {
                 backgroundColor: "#008b8b",
                 color: "#fff",
                 borderRadius: 8,
-                padding: "15px",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
               }}
             >
               <Row align="middle" style={{ marginBottom: "10px" }}>
@@ -54,8 +52,8 @@ const Announcements = () => {
                       borderRadius: "12px",
                     }}
                   >
-                    {dt.toShortDateString(item.ann_date, dt.formats.YearMonthDateDashed)}
-                    {/* {dt.toMonthYearString(item.ann_date, dt.formats.MonthDateYear4)} */}
+                    {/* {dt.toShortDateString(item.ann_date, dt.formats.YearMonthDateDashed)} */}
+                    {dt.toMonthYearString(item.ann_date, dt.formats.MonthDateYear4)}
 
                   </Text>
                 </Col>

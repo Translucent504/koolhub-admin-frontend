@@ -22,6 +22,16 @@ const dashboardServices = {
     return mb.api.get(`api/student/fetchExitStudentsTracking`, query);
   },
 
+  // one pera campusID
+  fetchRoomOccupancy: async (query) => {
+    return mb.api.get(`api/campusManagement/fetchRoomOccupancy`, query);
+  },
+
+  // 3 pera capmus Id, date from to
+  totalStudentsCountCampusWise: async (query) => {
+    return mb.api.get(`api/student/totalStudentsCountCampusWise`, query);
+  },
+
   // delete: async (id) => {
   //   const index = VAN_DATA.findIndex((item) => item.id === id);
 

@@ -4,7 +4,7 @@ import dashboardServices from "../Services/dashboardServices";
 
 export const useGlanceMeetings = ({date}) =>
     useQuery({
-      queryKey:["GlanceMeetings",],
+      queryKey:["GlanceMeetings",date],
       queryFn: async () => dashboardServices.fetchGlanceMeetings({date}),
     });
   
