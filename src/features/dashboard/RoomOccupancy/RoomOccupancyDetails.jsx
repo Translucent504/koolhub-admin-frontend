@@ -61,10 +61,10 @@ const RoomOccupancyDetails = () => {
         title={
           <>
             <span>
-              <HomeOutlined style={{ fontSize: "24px", marginRight: "10px" }} />
+              <HomeOutlined style={{ fontSize: "24px", marginRight: "10px",marginTop:"8px" }} />
               Campus Information
             </span>
-            <div style={{ float: "right" }}>
+            <div style={{ float: "right",marginTop:"8px" }}>
               <label style={{ marginRight: "10px" }}>Select Campus:</label>
               <Select
                 id="campusSelect"
@@ -87,6 +87,15 @@ const RoomOccupancyDetails = () => {
         </p>
         <p>
           <strong>Students Count:</strong> {campusData.count || 0}
+        </p>
+        <p>
+          <strong>Rooms Count:</strong> {rooms.length || 0}
+        </p>
+        <p>
+          <strong>Rooms capacity:</strong>{" "}
+          {rooms
+            .filter((room) => room.capacity)
+            .reduce((sum, room) => sum + room.capacity, 0) || 0}
         </p>
       </Card>
 

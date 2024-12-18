@@ -16,7 +16,6 @@ const Announcements = () => {
       styles={{
         body: {
           maxHeight: "300px",
-          // maxWidth:"45%",
           overflow: "auto",
         },
       }}

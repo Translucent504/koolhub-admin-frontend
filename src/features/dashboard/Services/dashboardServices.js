@@ -32,6 +32,11 @@ const dashboardServices = {
     return mb.api.get(`api/student/totalStudentsCountCampusWise`, query);
   },
 
+    // one pera campusID
+    fetchCampusKeepUp: async (query) => {
+      return mb.api.get(`api/KpiInfo/CampusUpKeepDashboard`, query);
+    },
+
   // delete: async (id) => {
   //   const index = VAN_DATA.findIndex((item) => item.id === id);
 
