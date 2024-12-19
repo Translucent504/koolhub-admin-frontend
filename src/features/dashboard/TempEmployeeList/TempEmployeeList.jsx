@@ -3,21 +3,21 @@ import Widget from "components/Widget";
 import dayjs from "dayjs";
 import { AuthContext } from "features/auth/context";
 import { useContext } from "react";
-import { useExitStudentsList } from "./hook";
+import { useFetchTempEmpList } from "./hook";
 
 const { Text } = Typography;
 
-const ExitStudentTracking = () => {
+const TempEmployeeList = () => {
   const { user } = useContext(AuthContext);
 
-  const { data } = useExitStudentsList({ campusId: user.campusId });
+  const { data } = useFetchTempEmpList({ userCode: user.userCode });
 
   // Columns Definition
   const columns = [
     {
-      title: "GR Number",
-      dataIndex: "grNumber",
-      key: "grNumber",
+      title: "ID",
+      dataIndex: "empId",
+      key: "empId",
       render: (text) => <Text strong>{text}</Text>,
     },
     {
@@ -26,50 +26,40 @@ const ExitStudentTracking = () => {
       key: "name",
     },
     {
-      title: "Apply for Exit Date",
-      dataIndex: "applyForExitDate",
-      key: "applyForExitDate",
+      title: "DOJ",
+      dataIndex: "joiningDate",
+      key: "joiningDate",
       render: (date) => dayjs(date).format("DD-MM-YYYY"),
     },
     {
-      title: "Exit Date",
-      dataIndex: "exitDate",
-      key: "exitDate",
-      render: (date) => dayjs(date).format("DD-MM-YYYY"),
-    },
-    {
-      title: "Class",
-      dataIndex: "class",
-      key: "class",
-    },
-    {
-      title: "Campus",
-      dataIndex: "campus",
-      key: "campus",
+      title: "Section",
+      dataIndex: "empId",
+      key: "empId",
     },
   ];
 
   return (
     <Widget
-      title={"Exit Students List"}
+      title={"Employee To Permenant"}
       styles={{
         body: {
-          maxHeight: "250px",
+          maxHeight: "300px",
           overflow: "auto",
         },
       }}
     >
       <Table
+      style={{
+        padding:"0px"
+      }}
+      size="small"
         dataSource={data}
         columns={columns}
         rowKey="grNumber"
-        size="small"
-        // bordered
         pagination={{ pageSize: 10 }}
-        // tableLayout="fixed"
       />
     </Widget>
   );
 };
 
-export default ExitStudentTracking;
+export default TempEmployeeList;

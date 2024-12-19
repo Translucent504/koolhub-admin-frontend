@@ -1,4 +1,4 @@
-import { Card, Row, Col, Typography, Badge, Space } from "antd";
+import { Card, Row, Typography, Badge, Space } from "antd";
 import {
   UserOutlined,
   FileAddOutlined,
@@ -59,55 +59,51 @@ const EmployeeCounter = () => {
         },
       }}
     >
-      <Row gutter={[24, 24]} >
+      <Row gutter={[10, 10]}>
         {employeeData.map((item, index) => (
-          <Col
+          <Card
             key={index}
-            xs={24}
-            sm={8}
-            md={12}
-            lg={6}
-            style={{ display: "flex", justifyContent: "center" }}
+            bordered={false}
+            style={{
+              backgroundColor: item.color,
+              borderRadius: 10,
+              color: "#fff",
+              padding: "10px",
+              width: "100%", // Ensures it adjusts within the column
+            }}
           >
-            <Card
-              bordered={false}
-              style={{
-                backgroundColor: item.color,
-                borderRadius: 10,
-                textAlign: "center",
-                color: "#fff",
-                width: "100%", // Ensure it adjusts within the column
-                maxWidth: "120px", // Limit maximum width
-              }}
+            <Space
+              style={{ display: "flex", alignItems: "center" }}
+              direction="horizontal"
             >
-              <Space direction="vertical" size="middle" align="center">
-                <Badge
-                  count={item.icon}
-                  style={{
-                    backgroundColor: "#fff",
-                    color: item.color,
-                    fontSize: "20px",
-                    height: "40px",
-                    width: "40px",
-                    borderRadius: "50%",
-                    lineHeight: "40px",
-                  }}
-                />
+              {/* Icon on the left */}
+              <Badge
+                count={item.icon}
+                style={{
+                  backgroundColor: "#fff",
+                  color: item.color,
+                  fontSize: "20px",
+                  borderRadius: "50%",
+                  padding: "10px",
+                }}
+              />
+              {/* Content */}
+              <div style={{ marginLeft: "10px", textAlign: "left" }}>
                 <Text
                   style={{
                     fontSize: "24px",
                     fontWeight: "bold",
-                    lineHeight: "1.2",
                   }}
                 >
                   {item.count}
                 </Text>
+                <br />
                 <Text style={{ fontSize: "14px", opacity: 0.9 }}>
                   {item.label}
                 </Text>
-              </Space>
-            </Card>
-          </Col>
+              </div>
+            </Space>
+          </Card>
         ))}
       </Row>
     </Widget>
