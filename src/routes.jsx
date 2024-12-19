@@ -13,6 +13,7 @@ import {
   RequireAuth,
   SignIn,
 } from "features/auth/components";
+import RoomOccupancyDetails from "features/dashboard/RoomOccupancy/RoomOccupancyDetails";
 
 function DefaultHomeRoute() {
   return <Navigate to="/dashboard" />;
@@ -30,6 +31,9 @@ export const router = createBrowserRouter([
           {
             path: "dashboard",
             element: <HomePage />,
+          },          {
+            path: "roomsDetails",
+            element: <RoomOccupancyDetails />,
           },
           {
             path: "sample",

@@ -6,6 +6,7 @@ import {
   TruckOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  HomeOutlined
 } from "@ant-design/icons";
 import { footerText } from "@mb/config";
 import { Avatar, Button, Dropdown, Flex, Layout, Menu } from "antd";
@@ -27,6 +28,11 @@ const NavMenu = () => {
           key: "/",
           icon: <VideoCameraOutlined />,
           label: <NavLink to="/">Home</NavLink>,
+        },
+        {
+          key: "/roomsDetails",
+          icon: <HomeOutlined />,
+          label: <NavLink to="/roomsDetails">Room Occupancy</NavLink>,
         },
         {
           icon: <UserOutlined />,
